@@ -1,0 +1,58 @@
+ESP32 Partition Builder v1.0.6
+
+Flash Size 4M : Default
+
+Built-in partitions : OTA with Spiffs --> Over the air update capability
+
+
+name Type Subtype Size offset
+
+nvs
+otadata
+app0
+app1
+spiffs
+coredump
+
+* offsets are calculated automatically
+
+* Size can be changed by slide bar manipulation.
+
+* add partition 
+  NVS
+  OTA
+  Factory App
+  FAT File System, SPIFFS File System, LittelFS File System
+  OTA Data
+  Core Dump
+  Test App
+  PHY Initialisation Data
+
+* ADD PARTITION -> OTA(Over The Air Updates)
+  otadata - ESP32 for manage update
+  app0 - current/update app
+  app1 - update/current app
+  the size of app0 and app1 is always the same.
+
+<< Factory App >>
+1. Resize to Full!
+
+2. Save File : output - CSV File : partitions.csv 
+   --> Should be located in the same folder where Arduino codes(.ino) are
+
+
+3. go to Arduino IDE
+  (1) Tools --> Partition Scheme --> Custom
+  (2) Click Upload Button
+
+
+<< LittleFS File System >>
+1. (1) factory 
+   (2) littlefs
+
+
+<< OTA >>
+1. NVS
+   OTA
+   FAT
+

@@ -1,0 +1,32 @@
+    #include <esp_ghota.h>
+    #include <WiFi.h>
+
+    const char* ssid = "YOUR_WIFI_SSID";
+    const char* password = "YOUR_WIFI_PASSWORD";
+    const char* githubRepo = "your_github_username/your_repo";
+    const char* githubTag = "latest"; // Or a specific tag/branch
+
+    void setup() {
+      Serial.begin(115200);
+      WiFi.begin(ssid, password);
+      while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+        Serial.print(".");
+      }
+      Serial.println("Connected to WiFi");
+
+      esp_ghota.begin(githubRepo, githubTag); // Initialize the library
+    }
+
+    void loop() {
+        if (esp_ghota.checkForUpdate()) { // Check for updates
+            Serial.println("Update available!");
+            if (esp_ghota.performUpdate()) { // Download and update
+                Serial.println("Update successful! Rebooting...");
+                ESP.restart();
+            } else {
+                Serial.println("Update failed!");
+            }
+        }
+        delay(10000); // Check for updates every 10 seconds
+    }
