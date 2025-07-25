@@ -2,7 +2,7 @@
   "Configurations": [
     {
       "Version": "2.0.0",
-      "URL": "https://github/James-NCT/OTATEST/tree/main/.esp32s3.bin"
+      "URL": "https://github/James-NCT/OTATEST/tree/main/esp32s3.bin"
     }
   ]
 }
